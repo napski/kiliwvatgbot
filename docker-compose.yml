@@ -1,0 +1,17 @@
+services:
+  api:
+    build: .
+    container_name: kiliwvatgbot-api
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  bot:
+    build: .
+    container_name: kiliwvatgbot-bot
+    env_file:
+      - .env
+    command: ["python", "-m", "bot.bot"]
+    restart: unless-stopped
